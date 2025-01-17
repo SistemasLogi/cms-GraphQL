@@ -1,0 +1,84 @@
+type CmsItem {
+    id: Int!
+    cms_item_name: String!
+    cms_item_title: String
+    url_header_image: String
+    text_add: String
+    sections: [Section] @hasMany
+}
+
+type CollaboratorUser {
+    id: Int!
+    roles_id: Int!
+    document_number: String
+    collaborator_name: String!
+    collaborator_email: String!
+    collaborator_status: Int!
+    user: String!
+    password: String!
+    roles: Roles @belongsTo
+    permissionCollaborator: [PermissionCollaborator] @hasMany
+}
+
+type ContentEntries {
+    id: Int!
+    entry_id: Int!
+    content: String!
+    content_type: String!
+    element_order: Int!
+    entry: Entry
+}
+
+type Entry {
+    id: Int!
+    section_id: Int!
+    entry_title: String
+    section: Section
+    contentEntries: [ContentEntries]
+    fileEntries: [FileEntries]
+}
+
+type FileEntries {
+    id: Int!
+    entry_id: Int!
+    url_file: String!
+    file_type: String!
+    element_order: Int!
+    entry: Entry
+}
+
+type IconsBootstrap {
+    id: Int!
+    icon_class: String!
+    icon_name: String!
+}
+
+type Permission {
+    id: Int!
+    permission_name: String!
+    access_level: Int!
+    permissionCollaborator: [PermissionCollaborator]
+}
+
+type PermissionCollaborator {
+    collaborator_user_id: Int!
+    permission_id: Int!
+}
+
+type Roles {
+    id: Int!
+    rol_name: String
+    collaboratorUser: [CollaboratorUser]
+}
+
+type Section {
+    id: Int!
+    cms_item_id: Int!
+    section_title: String
+    section_description: String
+    url_header_image: String
+    url_card_image: String
+    section_type: String
+    cmsItem: CmsItem
+    entryes: [Entry]
+}

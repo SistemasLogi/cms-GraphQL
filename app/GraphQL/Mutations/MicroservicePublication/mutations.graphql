@@ -1,0 +1,118 @@
+extend type Mutation {
+    deleteSection(id: Int!): DeleteResponse!
+        @roleHas(roles: ["Administrador", "Publicador"])
+
+    deleteEntry(id: Int!): DeleteResponse!
+        @roleHas(roles: ["Administrador", "Publicador"])
+
+    deleteFileEntry(id: Int!): DeleteResponse!
+        @roleHas(roles: ["Administrador", "Publicador"])
+
+    deleteContentEntry(id: Int!): DeleteResponse!
+        @roleHas(roles: ["Administrador", "Publicador"])
+
+    updatePrincipalItem(input: UpdateItemWithImgInput!): ItemCmsResponse!
+        @roleHas(roles: ["Administrador", "Publicador"])
+
+    updatePrincipalItemNotImage(
+        input: UpdateItemNotImgInput!
+    ): ItemCmsResponse! @roleHas(roles: ["Administrador", "Publicador"])
+
+    upsertSection(input: CreateSectionInput!): SectionWithImgResponse!
+        @roleHas(roles: ["Administrador", "Publicador"])
+
+    upsertEntry(input: UpsertEntryInput!): UpsertEntryResponse!
+        @roleHas(roles: ["Administrador", "Publicador"])
+
+    upsertFileEntry(input: UpsertFileEntryInput!): FileEntryResponse!
+        @roleHas(roles: ["Administrador", "Publicador"])
+
+    upsertContentEntry(input: UpsertContentEntryInput!): ContentEntryResponse!
+        @roleHas(roles: ["Administrador", "Publicador"])
+}
+
+input UpdateItemWithImgInput {
+    cms_item_id: Int!
+    cms_item_title: String
+    url_header_image: Upload!
+    text_add: String
+}
+
+input UpdateItemNotImgInput {
+    cms_item_id: Int!
+    cms_item_title: String
+    text_add: String
+}
+
+type ItemCmsResponse {
+    status: String!
+    status_code: Int!
+    status_message: String!
+    cms_item: CmsItem
+}
+
+input CreateSectionInput {
+    id: Int
+    cms_item_id: Int!
+    section_title: String
+    section_description: String
+    url_header_image: Upload
+    url_card_image: Upload
+    section_type: String!
+}
+
+type SectionWithImgResponse {
+    status: String!
+    status_code: Int!
+    status_message: String!
+    section: Section
+}
+
+type DeleteResponse {
+    status: String!
+    status_code: Int!
+    status_message: String!
+}
+
+input UpsertEntryInput {
+    id: Int
+    section_id: Int!
+    entry_title: String
+}
+
+type UpsertEntryResponse {
+    status: String!
+    status_code: Int!
+    status_message: String!
+    entry: Entry
+}
+
+input UpsertFileEntryInput {
+    id: Int
+    entry_id: Int!
+    url_file: Upload
+    file_type: String
+    element_order: Int
+}
+
+type FileEntryResponse {
+    status: String!
+    status_code: Int!
+    status_message: String!
+    file_entry: FileEntries
+}
+
+input UpsertContentEntryInput {
+    id: Int
+    entry_id: Int!
+    content: String
+    content_type: String
+    element_order: Int
+}
+
+type ContentEntryResponse {
+    status: String!
+    status_code: Int!
+    status_message: String!
+    contentEntry: ContentEntries
+}

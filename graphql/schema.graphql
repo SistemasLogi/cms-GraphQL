@@ -1,0 +1,26 @@
+#extend
+"A datetime string with format `Y-m-d H:i:s`, e.g. `2018-05-23 13:43:32`."
+#import types.graphql
+#import ../app/GraphQL/Queries/MicroserviceAuthentication/queries.graphql
+#import ../app/GraphQL/Queries/MicroservicePublication/queries.graphql
+
+#import ../app/GraphQL/Mutations/MicroserviceAuthentication/mutations.graphql
+#import ../app/GraphQL/Mutations/MicroservicePublication/mutations.graphql
+
+directive @roleHas(role: [String!]!) on ARGUMENT_DEFINITION
+scalar DateTime @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\DateTime")
+scalar Upload @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\Upload")
+
+"Indicates what fields are available at the top level of a query operation."
+
+type Query {
+  getIconsBootstrap: [IconsBootstrap!]! @all
+}
+
+type Mutation {
+  createIconBootstrap(icon_class: String! icon_name: String!): IconsBootstrap! @create
+
+  updateEncryptUserPassword(id: Int! password: String! @hash): CollaboratorUser! @update
+}
+
+

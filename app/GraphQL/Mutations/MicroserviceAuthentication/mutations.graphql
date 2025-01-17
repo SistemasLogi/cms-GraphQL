@@ -1,0 +1,42 @@
+extend type Mutation {
+    createCollaboratorUser(
+        input: CreateCollaboratorUserInput!
+    ): CollaboratorUserResponse! @roleHas(roles: ["Administrador"])
+
+    updateCollaboratorUser(
+        input: UpdateCollaboratorUserInput!
+    ): CollaboratorUserResponse! @roleHas(roles: ["Administrador"])
+
+    updatePermissionsCollaboratorUser(
+        user_id: Int!
+        permissions: [Int!]!
+    ): CollaboratorUserResponse! @roleHas(roles: ["Administrador"])
+}
+
+input CreateCollaboratorUserInput {
+    roles_id: Int!
+    document_number: Int!
+    collaborator_name: String!
+    collaborator_email: String!
+    collaborator_status: Int!
+    user: String!
+    password: String!
+}
+
+input UpdateCollaboratorUserInput {
+    id: Int!
+    roles_id: Int
+    document_number: Int
+    collaborator_name: String
+    collaborator_email: String
+    collaborator_status: Int
+    user: String
+    password: String
+}
+
+type CollaboratorUserResponse {
+    status: String!
+    status_code: Int!
+    status_message: String!
+    collaborator_user: CollaboratorUser
+}

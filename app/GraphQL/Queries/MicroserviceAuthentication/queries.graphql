@@ -1,0 +1,17 @@
+extend type Query {
+    loginCollaborator(user: String!, password: String!): Token!
+
+    refreshTokenCollaborator(encryptedKey: String!): Token!
+}
+
+type Token {
+    status: String!
+    status_code: Int!
+    status_message: String!
+    accessToken: String
+    expiresIn: Int
+    measureTime: String
+    accessType: String
+    encryptedKey: String
+    permissions: [Int]
+}

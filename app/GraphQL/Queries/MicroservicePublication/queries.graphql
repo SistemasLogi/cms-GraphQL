@@ -1,0 +1,31 @@
+extend type Query {
+    cmsItemList(id: Int): ItemCmsQueryResponse!
+        @roleHas(roles: ["Administrador", "Publicador"])
+
+    sectionList(id: Int): SectionListResponse!
+        @roleHas(roles: ["Administrador", "Publicador"])
+
+    entryList(id: Int): EntryListResponse!
+        @roleHas(roles: ["Administrador", "Publicador"])
+}
+
+type ItemCmsQueryResponse {
+    status: String!
+    status_code: Int!
+    status_message: String!
+    cms_items: [CmsItem]
+}
+
+type SectionListResponse {
+    status: String!
+    status_code: Int!
+    status_message: String!
+    sections: [Section]
+}
+
+type EntryListResponse {
+    status: String!
+    status_code: Int!
+    status_message: String!
+    entries: [Entry]
+}
