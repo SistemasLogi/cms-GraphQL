@@ -7,7 +7,6 @@ namespace App\GraphQL\Queries\MicroservicePublication;
 use Exception;
 use App\Models\Entry;
 use Illuminate\Support\Facades\DB;
-use Tymon\JWTAuth\Facades\JWTAuth;
 
 final class EntryList
 {
@@ -19,15 +18,7 @@ final class EntryList
     {
         try {
             return DB::transaction(function () use ($args) {
-                $token = JWTAuth::parseToken();
-                $payload = $token->getPayload();
-                $role = $payload->get('role');
-
-                // Validar roles permitidos
-                if (!in_array($role, ['Administrador', 'Publicador'])) {
-                    return $this->formatResponse('NOT OK', 403, 'Acceso no autorizado');
-                }
-
+                
                 // Obtener el listado de entradas
                 $query = Entry::query();
                 if (isset($args['id'])) {

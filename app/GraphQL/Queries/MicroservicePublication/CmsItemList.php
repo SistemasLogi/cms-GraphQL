@@ -1,10 +1,11 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace App\GraphQL\Queries\MicroservicePublication;
 
 use Exception;
 use App\Models\CmsItem;
-use Tymon\JWTAuth\Facades\JWTAuth;
 
 final class CmsItemList
 {
@@ -15,15 +16,6 @@ final class CmsItemList
     public function __invoke($_, array $args)
     {
         try {
-            // Verificar el token y obtener el rol del usuario
-            $token = JWTAuth::parseToken();
-            $payload = $token->getPayload();
-            $role = $payload->get('role');
-
-            // Validar roles permitidos
-            if (!in_array($role, ['Administrador', 'Publicador'])) {
-                return $this->formatResponse('NOT OK', 403, 'Acceso no autorizado');
-            }
 
             // Filtrar por id si está presente
             $query = CmsItem::query();

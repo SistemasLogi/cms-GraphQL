@@ -1,12 +1,9 @@
 extend type Query {
-    cmsItemList(id: Int): ItemCmsQueryResponse!
-        @roleHas(roles: ["Administrador", "Publicador"])
+    cmsItemList(id: Int): ItemCmsQueryResponse!        
 
     sectionList(id: Int): SectionListResponse!
-        @roleHas(roles: ["Administrador", "Publicador"])
 
     entryList(id: Int): EntryListResponse!
-        @roleHas(roles: ["Administrador", "Publicador"])
 }
 
 type ItemCmsQueryResponse {

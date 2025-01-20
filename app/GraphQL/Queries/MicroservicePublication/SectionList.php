@@ -5,7 +5,6 @@ namespace App\GraphQL\Queries\MicroservicePublication;
 use Exception;
 use App\Models\Section;
 use Illuminate\Support\Facades\DB;
-use Tymon\JWTAuth\Facades\JWTAuth;
 
 final class SectionList
 {
@@ -16,15 +15,7 @@ final class SectionList
     public function __invoke($_, array $args)
     {
         try {
-            return DB::transaction(function () use ($args) {
-                $token = JWTAuth::parseToken();
-                $payload = $token->getPayload();
-                $role = $payload->get('role');
-
-                // Validar roles permitidos
-                if (!in_array($role, ['Administrador', 'Publicador'])) {
-                    return $this->formatResponse('NOT OK', 403, 'Acceso no autorizado');
-                }
+            return DB::transaction(function () use ($args) {                
 
                 // Obtener el listado de secciones
                 $query = Section::query();
