@@ -203,6 +203,7 @@ return [
             'App\\GraphQL\\Queries',
             'App\\GraphQL\\Queries\\MicroserviceAuthentication',
             'App\\GraphQL\\Queries\\MicroservicePublication',
+            'App\\GraphQL\\Queries\\MicroserviceUserSystem',
         ],
         'mutations' => [
             'App\\GraphQL\\Mutations',

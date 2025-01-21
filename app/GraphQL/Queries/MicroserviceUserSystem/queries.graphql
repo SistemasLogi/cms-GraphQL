@@ -1,0 +1,11 @@
+extend type Query {
+    collaboratorUserData(collaborator_user_id: Int): CollaboratorUserDataResponse!
+        @roleHas(roles: ["Administrador", "Publicador"])
+}
+
+type CollaboratorUserDataResponse {
+    status: String!
+    status_code: Int!
+    status_message: String!
+    collaborator_user: [CollaboratorUser]
+}

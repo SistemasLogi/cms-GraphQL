@@ -3,6 +3,7 @@
 #import types.graphql
 #import ../app/GraphQL/Queries/MicroserviceAuthentication/queries.graphql
 #import ../app/GraphQL/Queries/MicroservicePublication/queries.graphql
+#import ../app/GraphQL/Queries/MicroserviceUserSystem/queries.graphql
 
 #import ../app/GraphQL/Mutations/MicroserviceAuthentication/mutations.graphql
 #import ../app/GraphQL/Mutations/MicroservicePublication/mutations.graphql
