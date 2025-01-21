@@ -1,5 +1,10 @@
 extend type Query {
-    collaboratorUserData(collaborator_user_id: Int): CollaboratorUserDataResponse!
+    collaboratorUserData(
+        collaborator_user_id: Int
+    ): CollaboratorUserDataResponse!
+        @roleHas(roles: ["Administrador", "Publicador"])
+
+    collaboratorUserByToken: CollaboratorUserByTokenResponse!
         @roleHas(roles: ["Administrador", "Publicador"])
 }
 
@@ -8,4 +13,11 @@ type CollaboratorUserDataResponse {
     status_code: Int!
     status_message: String!
     collaborator_user: [CollaboratorUser]
+}
+
+type CollaboratorUserByTokenResponse {
+    status: String!
+    status_code: Int!
+    status_message: String!
+    collaborator_user: CollaboratorUser
 }
