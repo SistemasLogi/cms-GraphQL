@@ -53,9 +53,9 @@ final class UpdatePrincipalItem
                 }
 
                 // Eliminar la imagen anterior si existe
-                //if ($cmsItem->url_header_image) {
-                    //Storage::disk('public')->delete($cmsItem->url_header_image);
-                //}
+                if ($cmsItem->url_header_image) {
+                    Storage::disk('public')->delete($cmsItem->url_header_image);
+                }
 
                 $input['url_header_image'] = $imagePath;
 
