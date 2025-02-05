@@ -33,6 +33,7 @@ type Entry {
     id: Int!
     section_id: Int!
     entry_title: String
+    entry_complement: String
     section: Section
     contentEntries: [ContentEntries]
     fileEntries: [FileEntries]

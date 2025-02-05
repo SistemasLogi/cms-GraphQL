@@ -39,6 +39,7 @@ final class UpsertEntry
                     $entry->update([
                         'section_id' => $input['section_id'] ?? $entry->section_id,
                         'entry_title' => $input['entry_title'] ?? $entry->entry_title,
+                        'entry_complement' => $input['entry_complement'] ?? $entry->entry_complement,
                     ]);
 
                     return $this->formatResponse('OK', 200, 'Entrada actualizada exitosamente', ['entry' => $entry]);
@@ -47,6 +48,7 @@ final class UpsertEntry
                     $entry = Entry::create([
                         'section_id' => $input['section_id'],
                         'entry_title' => $input['entry_title'] ?? '',
+                        'entry_complement' => $input['entry_complement'] ?? '',
                     ]);
 
                     return $this->formatResponse('OK', 201, 'Entrada creada exitosamente', ['entry' => $entry]);

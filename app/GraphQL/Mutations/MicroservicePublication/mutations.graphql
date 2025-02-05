@@ -78,6 +78,7 @@ input UpsertEntryInput {
     id: Int
     section_id: Int!
     entry_title: String
+    entry_complement: String
 }
 
 type UpsertEntryResponse {

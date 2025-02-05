@@ -11,7 +11,7 @@ class Entry extends Model
 
     protected $table = 'entry';
 
-    protected $fillable = ['id', 'section_id', 'entry_title'];
+    protected $fillable = ['id', 'section_id', 'entry_title', 'entry_complement'];
 
     public function section()
     {
