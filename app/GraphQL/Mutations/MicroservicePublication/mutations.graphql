@@ -11,6 +11,15 @@ extend type Mutation {
     deleteContentEntry(id: Int!): DeleteResponse!
         @roleHas(roles: ["Administrador", "Publicador"])
 
+    deletePrincipalItemImage(id: Int!): ItemCmsResponse!
+        @roleHas(roles: ["Administrador", "Publicador"])
+
+    deleteSectionImageHeader(id: Int!): SectionWithImgResponse!
+        @roleHas(roles: ["Administrador", "Publicador"])
+
+    deleteSectionImageCard(id: Int!): SectionWithImgResponse!
+        @roleHas(roles: ["Administrador", "Publicador"])
+
     updatePrincipalItem(input: UpdateItemWithImgInput!): ItemCmsResponse!
         @roleHas(roles: ["Administrador", "Publicador"])
 
