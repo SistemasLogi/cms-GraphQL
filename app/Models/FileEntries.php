@@ -17,6 +17,7 @@ class FileEntries extends Model
         'url_file',
         'file_type',
         'element_order',
+        'orientation_img',
     ];
 
     public function entry()

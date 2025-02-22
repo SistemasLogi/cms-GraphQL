@@ -47,6 +47,7 @@ final class UpsertFileEntry
                         'url_file' => $filePath ?? $fileEntry->url_file,
                         'file_type' => $input['file_type'] ?? $fileEntry->file_type,
                         'element_order' => $input['element_order'] ?? $fileEntry->element_order,
+                        'orientation_img' => $input['orientation_img'] ?? $fileEntry->orientation_img,
                     ]);
 
                     return $this->formatResponse('OK', 200, 'Archivo de entrada actualizado exitosamente', ['file_entry' => $fileEntry]);
@@ -61,6 +62,7 @@ final class UpsertFileEntry
                         'url_file' => $filePath ?? '',
                         'file_type' => $input['file_type'],
                         'element_order' => $input['element_order'],
+                        'orientation_img' => $input['orientation_img'] ?? null,
                     ]);
 
                     return $this->formatResponse('OK', 201, 'Archivo de entrada creado exitosamente', ['file_entry' => $fileEntry]);

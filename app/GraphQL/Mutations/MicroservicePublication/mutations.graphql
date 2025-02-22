@@ -103,6 +103,7 @@ input UpsertFileEntryInput {
     url_file: Upload
     file_type: String
     element_order: Int
+    orientation_img: String
 }
 
 type FileEntryResponse {

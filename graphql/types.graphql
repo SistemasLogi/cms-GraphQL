@@ -45,6 +45,7 @@ type FileEntries {
     url_file: String!
     file_type: String!
     element_order: Int!
+    orientation_img: String
     entry: Entry
 }
 
