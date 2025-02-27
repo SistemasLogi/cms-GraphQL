@@ -6,6 +6,8 @@ extend type Query {
 
     collaboratorUserByToken: CollaboratorUserByTokenResponse!
         @roleHas(roles: ["Administrador", "Publicador"])
+
+    permissionList: PermissionResponse! @roleHas(roles: ["Administrador"])
 }
 
 type CollaboratorUserDataResponse {
@@ -20,4 +22,11 @@ type CollaboratorUserByTokenResponse {
     status_code: Int!
     status_message: String!
     collaborator_user: CollaboratorUser
+}
+
+type PermissionResponse {
+    status: String!
+    status_code: Int!
+    status_message: String!
+    permissions: [Permission!]!
 }
