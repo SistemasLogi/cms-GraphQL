@@ -16,6 +16,8 @@ scalar Upload @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\Upload
 
 type Query {
   getIconsBootstrap: [IconsBootstrap!]! @all
+
+  getRoles: [Roles!]! @all
 }
 
 type Mutation {
