@@ -43,7 +43,9 @@ final class UpdateCollaboratorUser
                     'collaborator_status' => $input['collaborator_status'] ?? null,
                     'user' => $input['user'] ?? null,
                     'password' => isset($input['password']) ? Hash::make($input['password']) : null,
-                ]);
+                ], function ($value) {
+                    return $value !== null; // 🔹 Esto permite conservar el 0
+                });
 
                 $user->update($updateData);
 
