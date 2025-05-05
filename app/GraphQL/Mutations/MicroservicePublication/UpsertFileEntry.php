@@ -79,7 +79,21 @@ final class UpsertFileEntry
     private function storeFile($file, $path)
     {
         try {
-            return $file->store($path, 'public');
+            $originalName = $file->getClientOriginalName();
+
+            // Separar nombre y extensión
+            $extension = $file->getClientOriginalExtension();
+            $filename = pathinfo($originalName, PATHINFO_FILENAME);
+
+            // Limpiar el nombre del archivo: quitar espacios, caracteres especiales, etc.
+            $cleanName = preg_replace('/[^A-Za-z0-9_\-]/', '_', $filename);
+
+            // Agregar timestamp para evitar colisiones (opcional pero recomendado)
+            $timestamp = time();
+            $finalName = "{$cleanName}_{$timestamp}.{$extension}";
+
+            // Guardar con nombre limpio y único
+            return $file->storeAs($path, $finalName, 'public');
         } catch (Exception $e) {
             throw new Exception("Error al almacenar el archivo en {$path}: " . $e->getMessage());
         }
